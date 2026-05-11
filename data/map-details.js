@@ -392,4 +392,71 @@ window.MAP_DETAILS = Object.assign({}, window.FLORES_DETAILS || {}, {
       "obrazky/saomiguel/ermida-paz-2.png"
     ]
   }
+  ,
+  "https://www.notion.so/356351be095e81168ac1e9a3741dacd5": {
+    shortDescription: "Skryté smaragdové jezero v lese, klidný přírodní stop nedaleko Furnas.",
+    detailText: "Lagoa do Congro je tichá přírodní zastávka mimo největší turistický provoz, která dobře doplňuje geotermální část Furnas. Přístup vede krátkým sestupem lesem a celé místo působí víc jako tajné jezero v kráteru než jako klasický vyhlídkový bod.\n\nHodí se tehdy, když chcete vedle termálů a městečka zažít i klidnější přírodní kout bez složité logistiky. Největší kouzlo má ráno nebo v měkčím světle, kdy je kolem méně lidí a voda působí nejvýrazněji.",
+    tips: [
+      "Po dešti počítat s kluzkým lesním sestupem, pevnější boty se hodí.",
+      "Parkování bývá omezené, lepší je přijet dřív nebo později odpoledne.",
+      "Na místě se nekoupe, hlavní síla je atmosféra a krátká lesní procházka."
+    ],
+    primaryImage: "obrazky/saomiguel/lagoa-do-congro-1.png",
+    images: ["obrazky/saomiguel/lagoa-do-congro-1.png"]
+  },
+  "https://www.notion.so/356351be095e8156aa61d60c4aa44738": {
+    shortDescription: "Severní vesnice na Flores s majákem Ponta do Albernaz a dramatickými útesy.",
+    detailText: "Ponta Delgada na Flores je samostatná severní zastávka, která dává smysl i mimo trek jako atmosférický bod s výhledy na oceán a majákem Ponta do Albernaz. Oproti stejnojmenné etapě v itineráři jde o samotnou vesnici a její okolí, ne o nocleh nebo přesun.\n\nMísto je užitečné jako orientační bod pro sever ostrova, případně jako odbočka k majáku nebo k úvodu stezky PR01 FLO. Když je otevřená pobřežní trasa, funguje i jako logické pokračování cesty z Fajã Grande směrem na Cedros.",
+    tips: [
+      "U majáku bývá silný vítr i za pěkného počasí, hodí se lehká vrstva navíc.",
+      "Před pěší etapou odtud je dobré ověřit aktuální stav stezky PR01 FLO.",
+      "Samotná vesnice je malá, takže funguje spíš jako kratší stop než půldenní program."
+    ],
+    primaryImage: "obrazky/flores/ponta-delgada-flores-info-1.png",
+    images: ["obrazky/flores/ponta-delgada-flores-info-1.png"]
+  },
+  "https://www.notion.so/356351be095e811588aefe542cac58a8": {
+    shortDescription: "Obnovená kamenná vesnice nad Fajã Grande, silný průchozí bod treku po západě Floresu.",
+    detailText: "Aldeia da Cuada je historická opuštěná vesnice proměněná v citlivě obnovený resort z kamenných domků. Pro mapu dává smysl jako samostatný atmosférický bod, protože na trase PR02 FLO působí úplně jinak než okolní vodopády nebo vyhlídky.\n\nDobře funguje jako fotogenická zastávka mezi Lajedem a Fajã Grande a zároveň jako místo, kde se dá trek zpomalit nebo krátce občerstvit. Přestože dnes slouží jako ubytování, pro náš itinerář je hlavně průchozím místem a kulisou západního pobřeží.",
+    tips: [
+      "Areál je soukromý, ale kamenné cesty a kostelík jsou běžně přístupné návštěvníkům.",
+      "Skvěle se kombinuje s Poço do Bacalhau a dalšími body u Fajã Grande.",
+      "Na focení je nejhezčí měkčí světlo ráno nebo později odpoledne."
+    ],
+    primaryImage: "obrazky/flores/aldeia-cuada-1.png",
+    images: ["obrazky/flores/aldeia-cuada-1.png"]
+  },
+  "https://www.notion.so/356351be095e81de8402e04d96bacca8": {
+    shortDescription: "Jižní výchozí bod pobřežní stezky PR02 FLO a klidná vesnice na okraji Floresu.",
+    detailText: "Lajedo je pro mapu důležité jako samostatný jižní nástupní bod treku PR02 FLO, nejen jako název první etapy. Vesnice sama o sobě působí klidně a prakticky, ale hlavní význam má jako logistický a krajinářský start západní pobřežní trasy.\n\nPokud se půjde plná varianta Lajedo–Fajã Grande, dává smysl mít Lajedo i jako samostatný marker vedle etapové karty. Pomáhá to orientaci v jižní části ostrova a odděluje samotné místo od denního přechodu.",
+    tips: [
+      "Před odchodem je dobré ověřit aktuální stav stezky PR02 FLO kvůli případným sesuvům.",
+      "Ve vesnici bývá základní zázemí, ale nejde o místo na dlouhé zdržení.",
+      "Když se nepůjde celá etapa, funguje i jako krátká orientační zastávka autem."
+    ],
+    primaryImage: "obrazky/flores/lajedo-pr02-1.png",
+    images: ["obrazky/flores/lajedo-pr02-1.png"]
+  },
+  "https://www.notion.so/35d351be095e812ca274e8036815ed5c": {
+    shortDescription: "Autentické muzeum v bývalé velrybářské továrně, silná historická zastávka v Santa Cruz.",
+    detailText: "Museu da Fábrica da Baleia do Boqueirão uzavírá velrybářský příběh Floresu konkrétním průmyslovým prostorem, ne jen vitrínami. Haly, stroje a původní vybavení dávají mnohem silnější představu o tom, jak zpracování velryb na ostrově skutečně vypadalo.\n\nNa poslední den před odletem funguje dobře jako krátký program, který se dá zvládnout pěšky nebo krátkým přesunem z centra Santa Cruz. Je to jiný typ zážitku než příroda a trek, ale právě proto hezky rozšiřuje příběh celé Flores části.",
+    tips: [
+      "Ve čtvrtek je muzeum podle aktuálních podkladů otevřené, ale čas se vyplatí ještě ověřit.",
+      "Na prohlídku obvykle stačí zhruba 30 až 45 minut.",
+      "Dobře se kombinuje s ranním brunchem nebo krátkým koupáním před odletem."
+    ],
+    primaryImage: "obrazky/flores/boqueirao-whale-museum-1.png",
+    images: ["obrazky/flores/boqueirao-whale-museum-1.png"]
+  },
+  "https://www.notion.so/357351be095e8164ba98fd3effe06e83": {
+    shortDescription: "Závěrečný logistický bod návratu z Flores na São Miguel s krátkým dopoledním programem v Santa Cruz.",
+    detailText: "Tahleta karta je samostatný mapový bod hlavně proto, že uzavírá trek stejně jako předchozí etapové dny a má jasnou lokaci u Santa Cruz a letiště FLW. Oproti ostatním aktivitám jde méně o zážitek na místě a víc o přesun, balení a chytré využití posledních hodin na ostrově.\n\nV mapě dává smysl jako závěrečný praktický bod, který navazuje na kemp v Santa Cruz, muzeum i ranní koupání. Pomáhá odlišit poslední dopoledne na Flores od samotného letu a od následující mosteirské části výpravy.",
+    tips: [
+      "Počítat s rezervou na check-in a s tím, že pěší přesun na letiště je s krosnami pomalejší.",
+      "Plynovou bombu a další zakázané vybavení do letadla vyřešit ještě před odchodem z kempu.",
+      "Dopolední program držet lehký a blízko Santa Cruz, aby nebyl stres před odletem."
+    ],
+    primaryImage: "obrazky/flores/santa-cruz-airport-stage-1.png",
+    images: ["obrazky/flores/santa-cruz-airport-stage-1.png"]
+  }
 });
