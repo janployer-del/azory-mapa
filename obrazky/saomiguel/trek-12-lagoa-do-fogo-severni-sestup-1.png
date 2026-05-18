@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trek 12 | Lagoa do Fogo</title>
+  <style>
+    :root {
+      --paper: #f7f4ee;
+      --card: #fffdf8;
+      --ink: #24211d;
+      --muted: #5c5a55;
+      --accent: #85b640;
+      --accent-deep: #2c8c32;
+      --accent-soft: #edf6dd;
+      --route: #f32610;
+      --line: #ddd6c9;
+      --shadow: 0 18px 50px rgba(27, 28, 24, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, rgba(133, 182, 64, 0.14), transparent 32%),
+        linear-gradient(180deg, #f3efe6 0%, #ece8de 100%);
+      color: var(--ink);
+      font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+      line-height: 1.45;
+      padding: 32px 18px;
+    }
+
+    .page {
+      width: min(100%, 1320px);
+      margin: 0 auto;
+      background: var(--card);
+      border: 1px solid rgba(92, 90, 85, 0.12);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .topbar {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 18px;
+      background: linear-gradient(90deg, #eff8df 0%, #e5f0d2 100%);
+      padding: 18px 24px;
+      border-bottom: 1px solid rgba(133, 182, 64, 0.28);
+    }
+
+    .route-no {
+      background: var(--route);
+      color: #fff;
+      font-weight: 800;
+      font-size: 28px;
+      line-height: 1;
+      padding: 10px 14px 11px;
+      min-width: 48px;
+      text-align: center;
+      box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.12);
+    }
+
+    .heading h1 {
+      margin: 0;
+      font-size: clamp(34px, 3vw, 48px);
+      line-height: 1.05;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .duration {
+      justify-self: end;
+      display: grid;
+      gap: 6px;
+      justify-items: end;
+    }
+
+    .duration-badge {
+      background: var(--accent-deep);
+      color: #fff;
+      padding: 8px 12px;
+      font-size: 28px;
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      border-radius: 2px;
+    }
+
+    .duration-icon {
+      width: 30px;
+      height: 24px;
+      border: 2px solid var(--accent-deep);
+      border-radius: 4px;
+      position: relative;
+      background: #f2f9e9;
+    }
+
+    .duration-icon::before,
+    .duration-icon::after {
+      content: "";
+      position: absolute;
+      bottom: 4px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-deep);
+    }
+
+    .duration-icon::before { left: 4px; }
+    .duration-icon::after { right: 4px; }
+
+    .duration-icon span {
+      position: absolute;
+      left: 50%;
+      top: 4px;
+      width: 12px;
+      height: 7px;
+      transform: translateX(-50%);
+      border: 2px solid var(--accent-deep);
+      border-bottom: 0;
+      border-radius: 10px 10px 0 0;
+    }
+
+    .strapline {
+      padding: 14px 24px 0;
+      font-size: 22px;
+      font-style: italic;
+      font-weight: 700;
+    }
+
+    .content {
+      display: grid;
+      grid-template-columns: 420px 1fr;
+      gap: 28px;
+      padding: 18px 24px 26px;
+    }
+
+    .left-column,
+    .right-column {
+      display: grid;
+      gap: 18px;
+      align-content: start;
+    }
+
+    .summary p,
+    .body p {
+      margin: 0 0 12px;
+      font-size: 22px;
+    }
+
+    .fact-card,
+    .note-card {
+      background: linear-gradient(180deg, rgba(237, 246, 221, 0.9), rgba(237, 246, 221, 0.5));
+      border: 1px solid rgba(133, 182, 64, 0.28);
+      padding: 16px 18px;
+    }
+
+    .meta {
+      display: grid;
+      gap: 6px;
+    }
+
+    .meta-row {
+      font-size: 19px;
+      line-height: 1.32;
+    }
+
+    .meta-row strong {
+      color: var(--accent-deep);
+      font-weight: 900;
+    }
+
+    figure { margin: 0; }
+
+    .photo-frame,
+    .hero-frame,
+    .map-frame {
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+    }
+
+    .photo-frame img,
+    .hero-frame img,
+    .map-frame img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    figcaption {
+      font-size: 16px;
+      color: #46433d;
+      font-style: italic;
+      padding: 8px 10px 0;
+    }
+
+    .map-title,
+    .section-label {
+      margin: 0 0 10px;
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+
+    .body {
+      columns: 2;
+      column-gap: 24px;
+    }
+
+    .body p { break-inside: avoid; }
+
+    .footer-note {
+      border-top: 1px solid var(--line);
+      padding: 14px 24px 18px;
+      font-size: 15px;
+      color: var(--muted);
+    }
+
+    @media (max-width: 1080px) {
+      .content { grid-template-columns: 1fr; }
+      .body { columns: 1; }
+    }
+
+    @media (max-width: 720px) {
+      body { padding: 16px 10px; }
+      .topbar { grid-template-columns: auto 1fr; }
+      .duration {
+        grid-column: 1 / -1;
+        justify-self: start;
+        justify-items: start;
+      }
+      .strapline,
+      .content,
+      .footer-note {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+      .heading h1 { font-size: 30px; }
+      .summary p,
+      .body p { font-size: 19px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="route-no">12</div>
+      <div class="heading">
+        <h1>Lagoa do Fogo</h1>
+      </div>
+      <div class="duration" aria-label="Doba trasy">
+        <div class="duration-badge">3.00 h</div>
+        <div class="duration-icon" aria-hidden="true"><span></span></div>
+      </div>
+    </header>
+
+    <div class="strapline">Pobrezni prochazka kolem malebneho krateroveho jezera</div>
+
+    <section class="content">
+      <aside class="left-column">
+        <figure class="photo-frame">
+          <img src="assets/trek-12/side-photo.png" alt="Posledni usek sestupu k Lagoa do Fogo">
+          <figcaption>Posledni usek sestupu k jezeru po strmem a misty kluzkem chodniku.</figcaption>
+        </figure>
+
+        <div class="summary">
+          <p>Lagoa do Fogo lezi daleko od civilizace a pusobi jako jeden z nejcistsich a nejtišších koutů Sao Miguelu. Z oblibene vyhlidky na severnim okraji se za dobre viditelnosti sestupuje pesinou dolu k treti nejvetsimu kraterovemu jezeru ostrova, odkud pak vede pohodova prochazka podel brehu.</p>
+        </div>
+
+        <section class="fact-card" aria-labelledby="prakticke-udaje">
+          <h2 id="prakticke-udaje" class="section-label">Prakticke udaje</h2>
+          <div class="meta">
+            <div class="meta-row"><strong>Vychozi bod:</strong> nejsevernejsi vyhlidka na Lagoa do Fogo u silnice ER5, 713 m</div>
+            <div class="meta-row"><strong>Prevyseni:</strong> celkem 160 m</div>
+            <div class="meta-row"><strong>Narocnost:</strong> sestup po kluzke pesine vyzaduje naprostou jistotu kroku; u jezera se jde pohodlne po plazi, ale ne pri vysokem stavu vody</div>
+            <div class="meta-row"><strong>Obcerstveni:</strong> na trase neni</div>
+            <div class="meta-row"><strong>Koupani:</strong> plazovy usek u jezera Lagoa do Fogo</div>
+          </div>
+        </section>
+
+        <div>
+          <p class="map-title">Mapa trasy</p>
+          <figure class="map-frame">
+            <img src="assets/trek-12/map.png" alt="Mapa trasy Lagoa do Fogo">
+          </figure>
+        </div>
+
+        <section class="note-card" aria-labelledby="upozorneni">
+          <h2 id="upozorneni" class="section-label">Upozorneni</h2>
+          <div class="meta">
+            <div class="meta-row"><strong>Prirodni rezervace:</strong> kolem Lagoa do Fogo se rozprostira rozsahle chranene uzemi. Jakykoli zasah do prirody i zanechavani odpadu je prisne zakazano.</div>
+            <div class="meta-row"><strong>Hnizdeni ptaku:</strong> na jare byvaji kolem jezera agresivni racci, kteri si brani hnizdista.</div>
+          </div>
+        </section>
+      </aside>
+
+      <div class="right-column">
+        <figure class="hero-frame">
+          <img src="assets/trek-12/hero.png" alt="Breh Lagoa do Fogo">
+          <figcaption>Klidny breh Lagoa do Fogo pod zelenymi svahy krateru.</figcaption>
+        </figure>
+
+        <section class="body" aria-labelledby="popis-trasy">
+          <h2 id="popis-trasy" class="section-label">Popis trasy</h2>
+          <p>Malebne zasazene do nedotcene krajiny lezi „ohnive jezero“ Lagoa do Fogo stranou vsech sidel i hlavniho turistickeho provozu. Trasa zacina na nejsevernejsi vyhlidce u silnice ER5. Za jasneho dne a bez mlhy se odtud po pesine sestupuje dolu k vode. Prvni cast je nejstrmejsi a misty kluzka, zejmena po desti nebo za ranni vlhkosti.</p>
+          <p>Jakmile sejdeme niz, otevrou se blizsi pohledy na samotnou hladinu i svahy krateru. Posledni usek sestupu je technicky nejcitlivejsi, ale za odmenu privede primo na tichy breh jezera. Tady se charakter trasy uplne zmeni: misto prudkeho klesani prijde klidna, temer meditativni prochazka po plazi a podél vody, s minimem zvuku a bez viditelne zastavby.</p>
+          <p>Prave v tom spociva hlavni sila tohoto vyletu. Lagoa do Fogo neni jen dalsi vyhlidkove misto, ale prostor, ve kterem je mozne opravdu zazit samotu a prirodni ticho. Za nizkeho stavu vody se jde po brehu pohodlne a lze si uzit dlouhe useky s otevrenymi pohledy pres cistou hladinu. Kdyz je vody vic, je potreba pocitat s omezenim pohybu po plazi a trasu nepretahovat za rozumnou mez.</p>
+          <p>Vylet je kratky a na vzdalenost nepusobi narocne, ale nema smysl ho podcenovat. Rozhodujici je stav pesiny a pocasi. Kdo trefi dobrou viditelnost, dostane jeden z nejcistsich zazitku, ktere Sao Miguel umi nabidnout: prudky sestup z vysokeho severniho okraje a potom tiche chozeni po brehu izolovaneho krateroveho jezera.</p>
+        </section>
+      </div>
+    </section>
+
+    <footer class="footer-note">
+      Samostatne vysazeny cesky vystup podle strany 11 zdrojoveho materialu. Fotografie a mapa jsou lokalni vyrezy z puvodni sazby.
+    </footer>
+  </main>
+</body>
+</html>
