@@ -1310,14 +1310,14 @@
           <div class="stats compact-stats">
             <div class="stat"><strong id="stat-points">0</strong><span>bodů v mapě</span></div>
             <div class="stat"><strong id="stat-phases">0</strong><span>fází cesty</span></div>
-            <div class="stat"><strong id="stat-bookings">0</strong><span>rezervací</span></div>
+            <div class="stat"><strong id="stat-activities">0</strong><span>aktivit</span></div>
           </div>
         </section>
 
         <details class="panel-section panel-details" id="filters-section">
           <summary>
             <span>Filtrovat mapu</span>
-            <span class="panel-details-meta">témata, fáze, rezervace</span>
+            <span class="panel-details-meta">témata a fáze cesty</span>
           </summary>
           <div class="panel-details-body">
             <p class="kicker">Témata</p>
@@ -1325,6 +1325,7 @@
 
             <p class="kicker">Fáze cesty</p>
             <div class="filter-row" id="phase-filters"></div>
+            <div class="filter-row" id="day-filters" style="display:none"></div>
           </div>
         </details>
 
@@ -1350,12 +1351,11 @@
 
         <div class="map-plaque">
           <h2>Azory 2026</h2>
-          <p>Ostrovní plán na jednom stole: noclehy, treky, termály, rezervace a místa, která drží atmosféru cesty.</p>
+          <p>Ostrovní plán na jednom stole: noclehy, treky, termály a místa, která drží atmosféru cesty.</p>
         </div>
 
         <div class="map-buttons">
           <button class="map-button" type="button" id="fit-all">Celá cesta</button>
-          <button class="map-button" type="button" id="booking-toggle">Rezervace</button>
         </div>
 
         <div class="logo-watermark" aria-hidden="true">
@@ -1461,7 +1461,7 @@
 
     ];
 
-    const state = { theme: "all", phase: "all", bookingsOnly: false, activeId: "", detailImageIndex: 0 };
+    const state = { theme: "all", phase: "all", visitDay: "all", activeId: "", detailImageIndex: 0 };
     const mapDetails = window.MAP_DETAILS || {};
     const themeFilterOptions = [
       ["all", "Vše"],
@@ -1604,7 +1604,6 @@
       return mappedPoints.filter(point => {
         if (state.theme !== "all" && point.filterCategory !== state.theme) return false;
         if (state.phase !== "all" && point.phase !== state.phase) return false;
-        if (state.bookingsOnly && !point.reserveBy) return false;
         return true;
       });
     }
@@ -1629,7 +1628,6 @@
             <div class="popup-row">
               <span class="tag">${escapeHtml(categories[point.category].label)}</span>
               <span class="tag">${escapeHtml(point.phase)}</span>
-              ${point.reserveBy ? `<span class="tag">rezervovat do ${formatDate(point.reserveBy)}</span>` : ""}
             </div>
             <div class="popup-links">
               ${point.mapyUrl ? `<a href="${escapeHtml(point.mapyUrl)}" target="_blank" rel="noopener">Mapy.cz</a>` : ""}
@@ -1662,7 +1660,6 @@
             <span class="tags">
               <span class="tag">${escapeHtml(categories[point.category].label)}</span>
               ${point.visitDate ? `<span class="tag">${formatDate(point.visitDate)}${point.visitEnd ? " - " + formatDate(point.visitEnd) : ""}</span>` : ""}
-              ${point.reserveBy ? `<span class="tag">do ${formatDate(point.reserveBy)}</span>` : ""}
             </span>
           </span>
         </button>`;
@@ -1676,6 +1673,7 @@
       themeFilters.querySelectorAll("button").forEach(button => {
         button.addEventListener("click", () => {
           state.theme = button.dataset.theme;
+          state.visitDay = "all";
           state.activeId = "";
           renderAll();
         });
@@ -1688,10 +1686,38 @@
       phaseFilters.querySelectorAll("button").forEach(button => {
         button.addEventListener("click", () => {
           state.phase = button.dataset.phase;
+          state.visitDay = "all";
           state.activeId = "";
           renderAll();
         });
       });
+
+      // Day filters — show days for selected phase
+      const dayFilters = document.getElementById("day-filters");
+      const visibleDays = state.phase === "all"
+        ? []
+        : [...new Set(
+            points
+              .filter(p => p.phase === state.phase && p.visitDate)
+              .map(p => p.visitDate)
+          )].sort();
+
+      if (visibleDays.length > 0) {
+        dayFilters.style.display = "";
+        dayFilters.innerHTML = [["all", "Všechny dny"], ...visibleDays.map(d => [d, formatDayLabel(d)])]
+          .map(([key, label]) => `<button class="${state.visitDay === key ? "active" : ""}" type="button" data-day="${escapeHtml(key)}">${escapeHtml(label)}</button>`)
+          .join("");
+        dayFilters.querySelectorAll("button").forEach(button => {
+          button.addEventListener("click", () => {
+            state.visitDay = button.dataset.day;
+            state.activeId = "";
+            renderAll();
+          });
+        });
+      } else {
+        dayFilters.style.display = "none";
+        dayFilters.innerHTML = "";
+      }
     }
 
     function formatDayLabel(value) {
@@ -1707,7 +1733,7 @@
       return points.filter(point => {
         if (state.theme !== "all" && point.filterCategory !== state.theme) return false;
         if (state.phase !== "all" && point.phase !== state.phase) return false;
-        if (state.bookingsOnly && !point.reserveBy) return false;
+        if (state.visitDay !== "all" && point.visitDate !== state.visitDay) return false;
         return true;
       });
     }
@@ -1827,7 +1853,6 @@
           </div>
           <div class="detail-links">
             ${point.mapyUrl ? `<a class="map-button ghost" href="${escapeHtml(point.mapyUrl)}" target="_blank" rel="noopener">Mapy.cz</a>` : ""}
-            <a class="map-button ghost" href="${escapeHtml(point.notionUrl)}" target="_blank" rel="noopener">Detailní popis</a>
           </div>
         </article>`;
     }
@@ -1841,7 +1866,7 @@
       if (!point) {
         meta.textContent = "Lokální obsah";
         closeButton.hidden = true;
-        container.innerHTML = `<div class="detail-empty">Klikni na libovolný bod v mapě a detail se zobrazí tady. Pop-up zůstává stručný a delší text i fotky jsou v panelu kvůli lepší čitelnosti na mobilu i desktopu.</div>`;
+        container.innerHTML = `<div class="detail-empty">Klikni na libovolný bod v mapě nebo v seznamu a detail se zobrazí tady.</div>`;
         return;
       }
 
@@ -1849,7 +1874,7 @@
       closeButton.hidden = false;
       meta.textContent = detail ? "Lokální detail" : "Bez lokálního detailu";
       if (!detail) {
-        container.innerHTML = `<div class="detail-empty">Pro tento bod zatím není připravený lokální detail. Základní informace zůstávají v mapě a původní stránka je pořád dostupná přes odkaz Detailní popis v panelu.</div>`;
+        container.innerHTML = `<div class="detail-empty">Pro tento bod zatím není připravený lokální detail. Základní informace jsou dostupné v popup okně po kliknutí na bod v mapě.</div>`;
         return;
       }
 
@@ -1975,7 +2000,7 @@
       const missingVisible = missingPoints.filter(point => {
         if (state.theme !== "all" && point.category !== state.theme) return false;
         if (state.phase !== "all" && point.phase !== state.phase) return false;
-        if (state.bookingsOnly && !point.reserveBy) return false;
+        if (state.visitDay !== "all" && point.visitDate !== state.visitDay) return false;
         return true;
       });
       document.getElementById("missing-section").style.display = missingVisible.length ? "" : "none";
@@ -2055,7 +2080,7 @@
       const visible = visibleAllPoints();
       document.getElementById("stat-points").textContent = mappedVisible.length;
       document.getElementById("stat-phases").textContent = new Set(visible.map(point => point.phase)).size;
-      document.getElementById("stat-bookings").textContent = visible.filter(point => point.reserveBy).length;
+      document.getElementById("stat-activities").textContent = visible.length;
     }
 
     function fitVisible() {
@@ -2118,17 +2143,11 @@
     document.getElementById("phase-clear").addEventListener("click", () => {
       state.phase = "all";
       state.theme = "all";
-      state.bookingsOnly = false;
+      state.visitDay = "all";
       state.activeId = "";
-      document.getElementById("booking-toggle").classList.remove("active");
       renderAll();
     });
     document.getElementById("detail-close").addEventListener("click", clearActiveDetail);
-    document.getElementById("booking-toggle").addEventListener("click", event => {
-      state.bookingsOnly = !state.bookingsOnly;
-      event.currentTarget.classList.toggle("active", state.bookingsOnly);
-      renderAll();
-    });
     document.getElementById("sidebar-toggle").addEventListener("click", () => {
       document.getElementById("panel").classList.toggle("open");
     });
