@@ -4,3 +4,4 @@ data/notion-web-sync-details.json
 tools/__pycache__/
 *.pyc
 .DS_Store
+backup/*.bak.js
