@@ -8,7 +8,7 @@
 <style>
   html, body { margin:0; padding:0; height:100%; }
   #map { position:absolute; inset:0; width:100%; height:100%; background:#aadaff; }
-  .atlas-marker { background:none; border:none; filter: drop-shadow(0 2px 3px rgba(0,0,0,.35)); }
+  .atlas-marker { background:none; border:none; }
   .leaflet-popup-content { margin:10px 12px; }
   .popup-card { width:248px; max-width:78vw; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; color:#20383f; }
   .popup-img { margin:-2px -2px 8px; }
@@ -29,6 +29,10 @@
   <script src="data/map-details.js"></script>
   <script>
     const rawPoints = [
+{"name":"PDL White Ocean","subtitle":"Festa Branca","rawCoordinates":"37.7397000N, 25.6680000W","type":"Aktivita","theme":"Atmosféra","phase":"3. 30.7.–2.8. Mosteiros","visitDate":"2026-08-01","visitEnd":"","reserveBy":"","cislo":94,"mapyUrl":"https://mapy.com/s/halerakefo","notionUrl":"https://app.notion.com/p/PDL-White-Ocean-Festa-Branca-378351be095e819998e1d4e6b39cc9ac"},
+{"name":"Termas das Caldeiras da Ribeira Grande typ od Johanisovych","subtitle":"","rawCoordinates":"37.7978229N, 25.4869509W","type":"Aktivita","theme":"Koupání","phase":"5. 4.8.–7.8. Senhora da Nazaré","visitDate":"","visitEnd":"","reserveBy":"2026-07-15","cislo":93,"mapyUrl":"https://mapy.com/s/henumesafo","notionUrl":"https://app.notion.com/p/Termas-das-Caldeiras-da-Ribeira-Grande-typ-od-Johanisovych-371351be095e8161a96bc83024a0a930"},
+{"name":"Jardim Botânico José do Canto","subtitle":"botanická zahrada, Ponta Delgada","rawCoordinates":"37.7467871N, 25.6699419W","type":"Aktivita","theme":"Příroda","phase":"1. 24.7. Ponta Delgada","visitDate":"2026-07-24","visitEnd":"","reserveBy":"","cislo":24,"mapyUrl":"https://mapy.com/s/botubogevu","notionUrl":"https://app.notion.com/p/Jardim-Bot-nico-Jos-do-Canto-botanick-zahrada-Ponta-Delgada-371351be095e817880e5c6336f9bfaa7"},
+{"name":"29.7. Corvo (bivak u pláže)","subtitle":"","rawCoordinates":"39.6726078N, 31.1207392W","type":"Ubytování","theme":"Praktické","phase":"2. 25.7.–30.7. Flores trek","visitDate":"2026-07-29","visitEnd":"","reserveBy":"","cislo":48,"mapyUrl":"https://mapy.com/s/domapusedo","notionUrl":"https://app.notion.com/p/29-7-Corvo-bivak-u-pl-e-366351be095e8190b96ac18cb5ece2a1"},
 {"name":"Museu das Flores","subtitle":"","rawCoordinates":"39.4518183N, 31.1291036W","type":"Aktivita","theme":"Atrakce","phase":"2. 25.7.–30.7. Flores trek","visitDate":"2026-07-30","visitEnd":"","reserveBy":"","cislo":52,"mapyUrl":"https://mapy.com/s/lezocofadu","notionUrl":"https://app.notion.com/p/Museu-das-Flores-363351be095e80398dd6d878168a1d4b"},
 {"name":"Trek 71","subtitle":"Fajã do Conde (nejstarší sídlo Flores)","rawCoordinates":"39.4395564N, 31.1517200W","type":"Aktivita","theme":"Atrakce","phase":"2. 25.7.–30.7. Flores trek","visitDate":"2026-07-30","visitEnd":"","reserveBy":"","cislo":53,"mapyUrl":"https://mapy.com/s/cefucodore","notionUrl":"https://app.notion.com/p/Trek-71-Faj-do-Conde-nejstar-s-dlo-Flores-361351be095e81df876bc732198d1449"},
 {"name":"Trek 66","subtitle":"Okolo Fajã Grande (okruh s Poço do Bacalhau a Cuadou)","rawCoordinates":"39.4536089N, 31.2621097W","type":"Aktivita","theme":"","phase":"2. 25.7.–30.7. Flores trek","visitDate":"2026-07-26","visitEnd":"","reserveBy":"","cislo":38,"mapyUrl":"https://mapy.com/s/nolavegeha","notionUrl":"https://app.notion.com/p/Trek-66-Okolo-Faj-Grande-okruh-s-Po-o-do-Bacalhau-a-Cuadou-361351be095e817fa2a1deed15cb35ed"},
@@ -43,94 +47,76 @@
 {"name":"Trek 09 Lagoas Empadadas","subtitle":"","rawCoordinates":"37.8347822N, 25.7586853W","type":"Aktivita","theme":"Turistika","phase":"3. 30.7.–2.8. Mosteiros","visitDate":"2026-08-01","visitEnd":"","reserveBy":"","cislo":89,"mapyUrl":"https://mapy.com/s/mekoceloce","notionUrl":"https://app.notion.com/p/Trek-09-Lagoas-Empadadas-35f351be095e8140aecdd1beabae60d5"},
 {"name":"Trek 07 Caldeira das Sete Cidades","subtitle":"sestup k jezerům","rawCoordinates":"37.8396550N, 25.7949008W","type":"Aktivita","theme":"Turistika","phase":"3. 30.7.–2.8. Mosteiros","visitDate":"2026-07-31","visitEnd":"","reserveBy":"","cislo":88,"mapyUrl":"https://mapy.com/s/lahelohevu","notionUrl":"https://app.notion.com/p/Trek-07-Caldeira-das-Sete-Cidades-sestup-k-jezer-m-35f351be095e816d8f62e44c0f7a27bb"},
 {"name":"Trek 06 Okruh kolem Pico de Mafra Trek","subtitle":"","rawCoordinates":"37.8920197N, 25.8062125W","type":"Aktivita","theme":"Turistika","phase":"3. 30.7.–2.8. Mosteiros","visitDate":"2026-07-31","visitEnd":"","reserveBy":"","cislo":85,"mapyUrl":"https://mapy.com/s/rapefuposo","notionUrl":"https://app.notion.com/p/Trek-06-Okruh-kolem-Pico-de-Mafra-Trek-35f351be095e8197948ecf545db40dac"},
+{"name":"Museu da Fábrica da Baleia do Boqueirão","subtitle":"velrybářská továrna z roku 1944","rawCoordinates":"39.4628942N, 31.1301428W","type":"Aktivita","theme":"Atrakce","phase":"2. 25.7.–30.7. Flores trek","visitDate":"2026-07-30","visitEnd":"","reserveBy":"","cislo":51,"mapyUrl":"https://mapy.com/s/badazecabe","notionUrl":"https://app.notion.com/p/Museu-da-F-brica-da-Baleia-do-Boqueir-o-velryb-sk-tov-rna-z-roku-1944-35d351be095e812ca274e8036815ed5c"},
 {"name":"25.7. so","subtitle":"Lajedo → Fajã Grande Trek 65","rawCoordinates":"39.4262611N, 31.2588942W","type":"Aktivita","theme":"Turistika","phase":"2. 25.7.–30.7. Flores trek","visitDate":"2026-07-25","visitEnd":"","reserveBy":"","cislo":32,"mapyUrl":"https://mapy.com/s/jasazufako","notionUrl":"https://app.notion.com/p/25-7-so-Lajedo-Faj-Grande-Trek-65-357351be095e81079baedb60af4e4a09"},
 {"name":"28.7. út","subtitle":"Ponta Delgada → cca 5 km nad Santa Cruz Trek 69+70","rawCoordinates":"39.4938272N, 31.1659000W","type":"Aktivita","theme":"Turistika","phase":"2. 25.7.–30.7. Flores trek","visitDate":"2026-07-28","visitEnd":"","reserveBy":"","cislo":44,"mapyUrl":"https://mapy.com/s/betunevena","notionUrl":"https://app.notion.com/p/28-7-t-Ponta-Delgada-cca-5-km-nad-Santa-Cruz-Trek-69-70-357351be095e815c8c58c81c422e10c2"},
 {"name":"26.7. ne","subtitle":"Lagoa Negra (nalehko z Fajã Grande) Trek 67","rawCoordinates":"39.4406958N, 31.2233222W","type":"Aktivita","theme":"Turistika","phase":"2. 25.7.–30.7. Flores trek","visitDate":"2026-07-26","visitEnd":"","reserveBy":"","cislo":36,"mapyUrl":"https://mapy.com/s/bodezegehu","notionUrl":"https://app.notion.com/p/26-7-ne-Lagoa-Negra-nalehko-z-Faj-Grande-Trek-67-357351be095e815e8286f1391de3c930"},
+{"name":"27.7. po","subtitle":"Fajã Grande → Ponta Delgada (přes 7 jezer) Trek 68","rawCoordinates":"39.4875800N, 31.2540469W","type":"Aktivita","theme":"Turistika","phase":"2. 25.7.–30.7. Flores trek","visitDate":"2026-07-27","visitEnd":"","reserveBy":"","cislo":39,"mapyUrl":"https://mapy.com/s/nulotejeha","notionUrl":"https://app.notion.com/p/27-7-po-Faj-Grande-Ponta-Delgada-p-es-7-jezer-Trek-68-357351be095e81e4a84dc12648802df6"},
+{"name":"Zona de Campismo, Lajes das Flores","subtitle":"","rawCoordinates":"39.3794617N, 31.1741196W","type":"Ubytování","theme":"Praktické","phase":"2. 25.7.–30.7. Flores trek","visitDate":"","visitEnd":"","reserveBy":"","cislo":54,"mapyUrl":"https://mapy.com/s/junofapefa","notionUrl":"https://app.notion.com/p/Zona-de-Campismo-Lajes-das-Flores-357351be095e814bae96f1ab2448b9d0"},
+{"name":"28.7. út","subtitle":"Alagoa / sever Santa Cruz","rawCoordinates":"39.4746785N, 31.1491522W","type":"Ubytování","theme":"Praktické","phase":"2. 25.7.–30.7. Flores trek","visitDate":"2026-07-28","visitEnd":"","reserveBy":"","cislo":43,"mapyUrl":"https://mapy.com/s/notatufoha","notionUrl":"https://app.notion.com/p/28-7-t-Alagoa-sever-Santa-Cruz-357351be095e814d9d42d97be3541d34"},
+{"name":"27.7. po","subtitle":"Ponta Delgada (Flores)","rawCoordinates":"39.5206134N, 31.2078308W","type":"Ubytování","theme":"Praktické","phase":"2. 25.7.–30.7. Flores trek","visitDate":"2026-07-27","visitEnd":"","reserveBy":"","cislo":40,"mapyUrl":"https://mapy.com/s/hosugabase","notionUrl":"https://app.notion.com/p/27-7-po-Ponta-Delgada-Flores-357351be095e818690ffd62661edf6f5"},
 {"name":"29.7. st","subtitle":"Piscinas do Altio / Santa Cruz","rawCoordinates":"39.4578986N, 31.1265442W","type":"Ubytování","theme":"Praktické","phase":"2. 25.7.–30.7. Flores trek","visitDate":"2026-07-29","visitEnd":"","reserveBy":"","cislo":48,"mapyUrl":"https://mapy.com/s/ratuzanupa","notionUrl":"https://app.notion.com/p/29-7-st-Piscinas-do-Altio-Santa-Cruz-357351be095e818aa22cd9a27d09d756"},
+{"name":"25.6. so","subtitle":"Fajã Grande","rawCoordinates":"39.4534347N, 31.2650910W","type":"Ubytování","theme":"Praktické","phase":"2. 25.7.–30.7. Flores trek","visitDate":"2026-07-25","visitEnd":"","reserveBy":"","cislo":31,"mapyUrl":"https://mapy.com/s/parojojede","notionUrl":"https://app.notion.com/p/25-6-so-Faj-Grande-357351be095e81d1b5c0fc1533660c72"},
+{"name":"Ponta Delgada (Flores)","subtitle":"severní vesnice s nejzápadnějším majákem Evropy","rawCoordinates":"39.5199089N, 31.2357233W","type":"Aktivita","theme":"Atmosféra","phase":"2. 25.7.–30.7. Flores trek","visitDate":"2026-07-27","visitEnd":"","reserveBy":"","cislo":37,"mapyUrl":"https://mapy.com/s/daralotufa","notionUrl":"https://app.notion.com/p/Ponta-Delgada-Flores-severn-vesnice-s-nejz-padn-j-m-maj-kem-Evropy-356351be095e8156aa61d60c4aa44738"},
+{"name":"Lajedo","subtitle":"jižní pobřeží Flores, výchozí bod PR02 FLO","rawCoordinates":"39.3926381N, 31.2489542W","type":"Aktivita","theme":"Atmosféra","phase":"2. 25.7.–30.7. Flores trek","visitDate":"2026-07-25","visitEnd":"","reserveBy":"","cislo":35,"mapyUrl":"https://mapy.com/s/cehasukope","notionUrl":"https://app.notion.com/p/Lajedo-ji-n-pob-e-Flores-v-choz-bod-PR02-FLO-356351be095e81de8402e04d96bacca8"},
 {"name":"Trek 19/20","subtitle":"Pico da Vara – nejvyšší vrchol São Miguel (1 103 m)","rawCoordinates":"37.8097006N, 25.2112775W","type":"Aktivita","theme":"Turistika","phase":"5. 4.8.–7.8. Senhora da Nazaré","visitDate":"2026-08-05","visitEnd":"","reserveBy":"2026-07-27","cislo":168,"mapyUrl":"https://mapy.com/s/mafejevoke","notionUrl":"https://app.notion.com/p/Trek-19-20-Pico-da-Vara-nejvy-vrchol-S-o-Miguel-1-103-m-356351be095e81839d17d8933133083a"},
+{"name":"Aldeia da Cuada","subtitle":"obnovená opuštěná vesnice na Flores","rawCoordinates":"39.4407947N, 31.2561850W","type":"Aktivita","theme":"Atmosféra","phase":"2. 25.7.–30.7. Flores trek","visitDate":"2026-07-25","visitEnd":"","reserveBy":"","cislo":34,"mapyUrl":"https://mapy.com/s/pefojabaja","notionUrl":"https://app.notion.com/p/Aldeia-da-Cuada-obnoven-opu-t-n-vesnice-na-Flores-356351be095e811588aefe542cac58a8"},
+{"name":"Lagoa do Congro","subtitle":"tajemné jezero v lese","rawCoordinates":"37.7564133N, 25.4070569W","type":"Aktivita","theme":"Příroda","phase":"5. 4.8.–7.8. Senhora da Nazaré","visitDate":"","visitEnd":"","reserveBy":"","cislo":121,"mapyUrl":"https://mapy.com/s/pemunecego","notionUrl":"https://app.notion.com/p/Lagoa-do-Congro-tajemn-jezero-v-lese-356351be095e81168ac1e9a3741dacd5"},
 {"name":"Trek 15","subtitle":"Pico do Ferro – vyhlídka nad Lagoa das Furnas","rawCoordinates":"37.7715711N, 25.3343808W","type":"Aktivita","theme":"Příroda","phase":"4. 2.8.–4.8. Furnas","visitDate":"2026-08-03","visitEnd":"","reserveBy":"","cislo":127,"mapyUrl":"https://mapy.com/s/puzokerave","notionUrl":"https://app.notion.com/p/Trek-15-Pico-do-Ferro-vyhl-dka-nad-Lagoa-das-Furnas-356351be095e81a4aa81f3d32cd19904"},
+{"name":"Cozido das Furnas","subtitle":"tradiční jídlo vařené v geotermální zemi","rawCoordinates":"37.7685456N, 25.3315403W","type":"Aktivita","theme":"Jídlo","phase":"4. 2.8.–4.8. Furnas","visitDate":"2026-08-02","visitEnd":"","reserveBy":"2026-07-30","cislo":128,"mapyUrl":"https://mapy.com/s/folanedugu","notionUrl":"https://app.notion.com/p/Cozido-das-Furnas-tradi-n-j-dlo-va-en-v-geoterm-ln-zemi-356351be095e81b88eebe9aa80d29007"},
+{"name":"Výlet na velryby a delfíny","subtitle":"Futurismo nebo Picosdeaventura","rawCoordinates":"37.7385787N, 25.6651434W","type":"Aktivita","theme":"Příroda","phase":"5. 4.8.–7.8. Senhora da Nazaré","visitDate":"2026-08-07","visitEnd":"","reserveBy":"2026-07-16","cislo":172,"mapyUrl":"https://mapy.com/s/cejemacucu","notionUrl":"https://app.notion.com/p/V-let-na-velryby-a-delf-ny-Futurismo-nebo-Picosdeaventura-34b351be095e810ca789c256f651a792"},
 {"name":"Trek 13","subtitle":"Túra k Lagoa do Fogo (PRC02 + PR39)","rawCoordinates":"37.7655244N, 25.4747825W","type":"Aktivita","theme":"Turistika","phase":"4. 2.8.–4.8. Furnas","visitDate":"2026-08-03","visitEnd":"","reserveBy":"","cislo":126,"mapyUrl":"https://mapy.com/s/kegepacepa","notionUrl":"https://app.notion.com/p/Trek-13-T-ra-k-Lagoa-do-Fogo-PRC02-PR39-34b351be095e8150a3dee2c62d053088"},
+{"name":"Sete Cidades","subtitle":"kaldera a hřebenovka (PR04 SMI)","rawCoordinates":"37.8686742N, 25.7828269W","type":"Aktivita","theme":"Turistika","phase":"3. 30.7.–2.8. Mosteiros","visitDate":"2026-07-31","visitEnd":"","reserveBy":"","cislo":84,"mapyUrl":"https://mapy.com/s/hepegeteha","notionUrl":"https://app.notion.com/p/Sete-Cidades-kaldera-a-h-ebenovka-PR04-SMI-34b351be095e81ac9e3be4c0476bf2d8"},
+{"name":"Ermida Nossa Senhora da Paz","subtitle":"kaple s ikonickým schodištěm","rawCoordinates":"37.7285559N, 25.4314419W","type":"Aktivita","theme":"Atmosféra","phase":"5. 4.8.–7.8. Senhora da Nazaré","visitDate":"2026-08-07","visitEnd":"","reserveBy":"","cislo":174,"mapyUrl":"https://mapy.com/s/gefozahaba","notionUrl":"https://app.notion.com/p/Ermida-Nossa-Senhora-da-Paz-kaple-s-ikonick-m-schodi-t-m-34b351be095e812db3dfe57ad68dbb7d"},
+{"name":"Ananásová plantáž A Arruda","subtitle":"skleníky, ochutnávka","rawCoordinates":"37.7631186N, 25.6410371W","type":"Aktivita","theme":"Jídlo","phase":"1. 24.7. Ponta Delgada","visitDate":"2026-07-24","visitEnd":"","reserveBy":"","cislo":21,"mapyUrl":"https://mapy.com/s/ranalamuro","notionUrl":"https://app.notion.com/p/Anan-sov-plant-A-Arruda-sklen-ky-ochutn-vka-34b351be095e8131bfe2e8b694b00252"},
+{"name":"Ribeira dos Caldeirões","subtitle":"přírodní park s vodopády a mlýny, Nordeste","rawCoordinates":"37.8432002N, 25.2685520W","type":"Aktivita","theme":"Příroda","phase":"5. 4.8.–7.8. Senhora da Nazaré","visitDate":"2026-08-05","visitEnd":"","reserveBy":"","cislo":164,"mapyUrl":"https://mapy.com/s/mejugarahe","notionUrl":"https://app.notion.com/p/Ribeira-dos-Caldeir-es-p-rodn-park-s-vodop-dy-a-ml-ny-Nordeste-34b351be095e813a8e57e0caccc6eb5e"},
+{"name":"Čajová plantáž Porto Formoso","subtitle":"malá plantáž s výhledem na oceán","rawCoordinates":"37.8158468N, 25.4241079W","type":"Aktivita","theme":"Jídlo","phase":"5. 4.8.–7.8. Senhora da Nazaré","visitDate":"2026-08-06","visitEnd":"","reserveBy":"","cislo":173,"mapyUrl":"https://mapy.com/s/cavenozuzu","notionUrl":"https://app.notion.com/p/ajov-plant-Porto-Formoso-mal-plant-s-v-hledem-na-oce-n-34b351be095e813b8208e4bbdeae4ad3"},
+{"name":"Trek 11","subtitle":"Z Caldeiras k Salto do Cabrito","rawCoordinates":"37.7962049N, 25.4943751W","type":"Aktivita","theme":"Příroda","phase":"4. 2.8.–4.8. Furnas","visitDate":"","visitEnd":"","reserveBy":"","cislo":125,"mapyUrl":"https://mapy.com/s/nepenarenu","notionUrl":"https://app.notion.com/p/Trek-11-Z-Caldeiras-k-Salto-do-Cabrito-34b351be095e8172a2f8fd7fc92c0600"},
+{"name":"Gruta do Carvão","subtitle":"vulkanická jeskyně, ideální při dešti","rawCoordinates":"37.7481639N, 25.6870688W","type":"Aktivita","theme":"Atrakce","phase":"3. 30.7.–2.8. Mosteiros","visitDate":"","visitEnd":"","reserveBy":"","cislo":86,"mapyUrl":"https://mapy.com/s/mugumutape","notionUrl":"https://app.notion.com/p/Gruta-do-Carv-o-vulkanick-jeskyn-ide-ln-p-i-de-ti-34b351be095e81879925c9839cb6faff"},
+{"name":"Mosteiros","subtitle":"Piscinas Naturais Caneiros, skalní útvary, západ slunce","rawCoordinates":"37.8877474N, 25.8239758W","type":"Aktivita","theme":"Koupání","phase":"3. 30.7.–2.8. Mosteiros","visitDate":"2026-07-31","visitEnd":"","reserveBy":"","cislo":82,"mapyUrl":"https://mapy.com/s/cotetesoja","notionUrl":"https://app.notion.com/p/Mosteiros-Piscinas-Naturais-Caneiros-skaln-tvary-z-pad-slunce-34b351be095e818ba82cf598f0c71bf0"},
 {"name":"Trek 24 Chá Gorreana","subtitle":"nejstarší čajové plantáže v Evropě","rawCoordinates":"37.8184184N, 25.4024255W","type":"Aktivita","theme":"Jídlo","phase":"5. 4.8.–7.8. Senhora da Nazaré","visitDate":"2026-08-06","visitEnd":"","reserveBy":"","cislo":170,"mapyUrl":"https://mapy.com/s/kurojavava","notionUrl":"https://app.notion.com/p/Trek-24-Ch-Gorreana-nejstar-ajov-plant-e-v-Evrop-34b351be095e81a08a4ee99e977aa8a4"},
+{"name":"Praia dos Moinhos","subtitle":"tip na koupání","rawCoordinates":"37.8235953N, 25.4452901W","type":"Aktivita","theme":"Koupání","phase":"5. 4.8.–7.8. Senhora da Nazaré","visitDate":"2026-08-06","visitEnd":"","reserveBy":"","cislo":91,"mapyUrl":"https://mapy.com/s/cejetabola","notionUrl":"https://app.notion.com/p/Praia-dos-Moinhos-tip-na-koup-n-34b351be095e81e38ef0c306591c41b7"},
+{"name":"Vigie","subtitle":"historické pozorovatelny velrybářů","rawCoordinates":"37.8240176N, 25.4623691W","type":"Aktivita","theme":"Atmosféra","phase":"5. 4.8.–7.8. Senhora da Nazaré","visitDate":"","visitEnd":"","reserveBy":"","cislo":171,"mapyUrl":"https://mapy.com/s/dozagohelo","notionUrl":"https://app.notion.com/p/Vigie-historick-pozorovatelny-velryb-34b351be095e812ebb05c4203d3efa74"},
+{"name":"Poça da Dona Beija","subtitle":"termální bazény ve Furnas","rawCoordinates":"37.7694673N, 25.3198560W","type":"Aktivita","theme":"Koupání","phase":"4. 2.8.–4.8. Furnas","visitDate":"2026-08-02","visitEnd":"","reserveBy":"2026-07-04","cislo":129,"mapyUrl":"https://mapy.com/s/gehezepuvu","notionUrl":"https://app.notion.com/p/Po-a-da-Dona-Beija-term-ln-baz-ny-ve-Furnas-34b351be095e8149b141dbde371ef5e5"},
+{"name":"Ribeira Quente","subtitle":"pláž s termálními prameny a černým pískem","rawCoordinates":"37.7306269N, 25.3105942W","type":"Aktivita","theme":"Koupání","phase":"1. 24.7. Ponta Delgada","visitDate":"","visitEnd":"","reserveBy":"","cislo":161,"mapyUrl":"https://mapy.com/s/penerevuje","notionUrl":"https://app.notion.com/p/Ribeira-Quente-pl-s-term-ln-mi-prameny-a-ern-m-p-skem-34b351be095e81618589d6b58fd333e6"},
+{"name":"Vila Franca do Campo","subtitle":"sopečná laguna","rawCoordinates":"37.7056204N, 25.4432322W","type":"Aktivita","theme":"Atmosféra","phase":"5. 4.8.–7.8. Senhora da Nazaré","visitDate":"2026-08-07","visitEnd":"","reserveBy":"2026-07-20","cislo":175,"mapyUrl":"https://mapy.com/s/dujenudofo","notionUrl":"https://app.notion.com/p/Vila-Franca-do-Campo-sope-n-laguna-34b351be095e8189ae88c3d98da154f7"},
+{"name":"Terra Nostra Park","subtitle":"termální bazén ve Furnas","rawCoordinates":"37.7704082N, 25.3128044W","type":"Aktivita","theme":"Koupání","phase":"4. 2.8.–4.8. Furnas","visitDate":"2026-08-02","visitEnd":"","reserveBy":"2026-07-20","cislo":130,"mapyUrl":"https://mapy.com/s/hufofabufe","notionUrl":"https://app.notion.com/p/Terra-Nostra-Park-term-ln-baz-n-ve-Furnas-34b351be095e81a981ffd420c8d28153"},
+{"name":"Nordeste","subtitle":"východní cíp ostrova, vodopády a míják","rawCoordinates":"37.7895827N, 25.1453290W","type":"Aktivita","theme":"Atmosféra","phase":"5. 4.8.–7.8. Senhora da Nazaré","visitDate":"2026-08-05","visitEnd":"","reserveBy":"","cislo":163,"mapyUrl":"https://mapy.com/s/hovopotoho","notionUrl":"https://app.notion.com/p/Nordeste-v-chodn-c-p-ostrova-vodop-dy-a-m-j-k-34b351be095e81e8b7aedb5150498859"},
+{"name":"Ponta da Ferraria","subtitle":"přírodní termální bazénky v oceánu","rawCoordinates":"37.8582806N, 25.8523509W","type":"Aktivita","theme":"Koupání","phase":"3. 30.7.–2.8. Mosteiros","visitDate":"2026-07-31","visitEnd":"","reserveBy":"","cislo":87,"mapyUrl":"https://mapy.com/s/gajebazada","notionUrl":"https://app.notion.com/p/Ponta-da-Ferraria-p-rodn-term-ln-baz-nky-v-oce-nu-34b351be095e810f8e6dea443b89dd14"},
+{"name":"Fajã Grande","subtitle":"nejzápadnější vesnice Evropy, Flores","rawCoordinates":"39.4538967N, 31.2623231W","type":"Aktivita","theme":"Atmosféra","phase":"2. 25.7.–30.7. Flores trek","visitDate":"2026-07-26","visitEnd":"","reserveBy":"","cislo":41,"mapyUrl":"https://mapy.com/s/roforutujo","notionUrl":"https://app.notion.com/p/Faj-Grande-nejz-padn-j-vesnice-Evropy-Flores-34b351be095e8150ae6ed83626d7090b"},
+{"name":"Rocha dos Bordões","subtitle":"čedičové varhany, Flores","rawCoordinates":"39.4070549N, 31.2412213W","type":"Aktivita","theme":"Příroda","phase":"2. 25.7.–30.7. Flores trek","visitDate":"2026-07-25","visitEnd":"","reserveBy":"","cislo":46,"mapyUrl":"https://mapy.com/s/dezolejefu","notionUrl":"https://app.notion.com/p/Rocha-dos-Bord-es-edi-ov-varhany-Flores-34b351be095e816995a9c51d37f614b3"},
+{"name":"Caldeira Negra","subtitle":"největší sopečný kráter na Flores","rawCoordinates":"39.4421885N, 31.2264691W","type":"Aktivita","theme":"Příroda","phase":"2. 25.7.–30.7. Flores trek","visitDate":"2026-07-26","visitEnd":"","reserveBy":"","cislo":49,"mapyUrl":"https://mapy.com/s/curopugera","notionUrl":"https://app.notion.com/p/Caldeira-Negra-nejv-t-sope-n-kr-ter-na-Flores-34b351be095e817cb8dffb48c8bf3827"},
+{"name":"Poço do Bacalhau","subtitle":"vodopád s jezerem na Flores","rawCoordinates":"39.4583640N, 31.2557095W","type":"Aktivita","theme":"Koupání","phase":"2. 25.7.–30.7. Flores trek","visitDate":"2026-07-27","visitEnd":"","reserveBy":"","cislo":42,"mapyUrl":"https://mapy.com/s/bekarokoto","notionUrl":"https://app.notion.com/p/Po-o-do-Bacalhau-vodop-d-s-jezerem-na-Flores-34b351be095e81c79544c3b8c05ad2ea"},
+{"name":"Poço da Alagoinha","subtitle":"vodopád v džungli, Flores","rawCoordinates":"39.4363864N, 31.2387886W","type":"Aktivita","theme":"Příroda","phase":"2. 25.7.–30.7. Flores trek","visitDate":"2026-07-26","visitEnd":"","reserveBy":"","cislo":45,"mapyUrl":"https://mapy.com/s/lubecarude","notionUrl":"https://app.notion.com/p/Po-o-da-Alagoinha-vodop-d-v-d-ungli-Flores-34b351be095e81d6b3acce690fc5c436"},
 {"name":"Trek 17","subtitle":"Faial da Terra — PR11 + okruh Sanguinho","rawCoordinates":"37.7748150N, 25.1843561W","type":"Aktivita","theme":"Turistika","phase":"5. 4.8.–7.8. Senhora da Nazaré","visitDate":"","visitEnd":"","reserveBy":"","cislo":133,"mapyUrl":"https://mapy.com/s/cudofupegu","notionUrl":"https://app.notion.com/p/Trek-17-Faial-da-Terra-PR11-okruh-Sanguinho-348351be095e81aa8b13f8c3d7c75b8a"},
-{"name":"29.7. st","subtitle":"Corvo lodí (Caldeirão) Trek 75, 76, 77","rawCoordinates":"39.6717408N, 31.1102033W","type":"Aktivita","theme":"Atrakce","phase":"2. 25.7.–30.7. Flores trek","visitDate":"2026-07-29","visitEnd":"","reserveBy":"2026-07-15","cislo":47,"mapyUrl":"https://mapy.com/s/lehupapaje","notionUrl":"https://app.notion.com/p/29-7-st-Corvo-lod-Caldeir-o-Trek-75-76-77-348351be095e8183a41fd18b2e61d02f"}
+{"name":"29.7. st","subtitle":"Corvo lodí (Caldeirão) Trek 75, 76, 77","rawCoordinates":"39.6717408N, 31.1102033W","type":"Aktivita","theme":"Atrakce","phase":"2. 25.7.–30.7. Flores trek","visitDate":"2026-07-29","visitEnd":"","reserveBy":"2026-07-15","cislo":47,"mapyUrl":"https://mapy.com/s/lehupapaje","notionUrl":"https://app.notion.com/p/29-7-st-Corvo-lod-Caldeir-o-Trek-75-76-77-348351be095e8183a41fd18b2e61d02f"},
+{"name":"Sunrise House Azores","subtitle":"dům na severovýchodě ostrova","rawCoordinates":"37.8160189N, 25.1394086W","type":"Ubytování","theme":"Praktické","phase":"5. 4.8.–7.8. Senhora da Nazaré","visitDate":"2026-08-04","visitEnd":"2026-08-07","reserveBy":"","cislo":162,"mapyUrl":"https://mapy.com/s/kadepokaza","notionUrl":"https://app.notion.com/p/Sunrise-House-Azores-d-m-na-severov-chod-ostrova-345351be095e81ce9fb2ddaf7191f70a"},
+{"name":"Casa do Largo","subtitle":"dům u parku Terra Nostra, Furnas","rawCoordinates":"37.7704961N, 25.3157550W","type":"Ubytování","theme":"Praktické","phase":"4. 2.8.–4.8. Furnas","visitDate":"2026-08-02","visitEnd":"2026-08-04","reserveBy":"","cislo":123,"mapyUrl":"https://mapy.com/s/mavavomaje","notionUrl":"https://app.notion.com/p/Casa-do-Largo-d-m-u-parku-Terra-Nostra-Furnas-345351be095e81f982d9ee2de260f0df"},
+{"name":"Oceanview 2","subtitle":"apartmán v Ponta Delgada","rawCoordinates":"37.7404036N, 25.6644561W","type":"Ubytování","theme":"Praktické","phase":"1. 24.7. Ponta Delgada","visitDate":"2026-07-24","visitEnd":"","reserveBy":"","cislo":22,"mapyUrl":"https://mapy.com/s/kohecepejo","notionUrl":"https://app.notion.com/p/Oceanview-2-apartm-n-v-Ponta-Delgada-345351be095e819988d1f7f4935e06cf"},
+{"name":"Green Mountain","subtitle":"dům v Mosteiros","rawCoordinates":"37.8908656N, 25.8202775W","type":"Ubytování","theme":"Praktické","phase":"3. 30.7.–2.8. Mosteiros","visitDate":"2026-07-30","visitEnd":"2026-08-02","reserveBy":"","cislo":81,"mapyUrl":"https://mapy.com/s/novegepuva","notionUrl":"https://app.notion.com/p/Green-Mountain-d-m-v-Mosteiros-345351be095e81bb897dface588d4b82"},
+{"name":"Caldeira Velha","subtitle":"termální bazény s vodopádem","rawCoordinates":"37.7822208N, 25.5004378W","type":"Aktivita","theme":"Koupání","phase":"4. 2.8.–4.8. Furnas","visitDate":"2026-08-02","visitEnd":"","reserveBy":"2026-06-30","cislo":122,"mapyUrl":"https://mapy.com/s/kosupafovo","notionUrl":"https://app.notion.com/p/Caldeira-Velha-term-ln-baz-ny-s-vodop-dem-345351be095e8151a350d8cc7e7ee657"}
     ]
-
     const mapDetails = window.MAP_DETAILS || {};
-    const categories = {
-      ubytovani: { label: "Ubytování", color: "#b63a32" },
-      priroda:   { label: "Příroda", color: "#506a2f" },
-      turistika: { label: "Turistika", color: "#6f7d2f" },
-      koupani:   { label: "Koupání", color: "#1a7087" },
-      jidlo:     { label: "Jídlo", color: "#8c5c2b" },
-      atmosfera: { label: "Atmosféra / výhled", color: "#7c5a73" },
-      prakticke: { label: "Praktické", color: "#6d6758" },
-      atrakce:   { label: "Atrakce", color: "#9f8530" }
-    };
-    function categoryFor(point) {
-      if (point.type === "Ubytování") return "ubytovani";
-      if (point.theme === "Turistika") return "turistika";
-      if (point.theme === "Příroda") return "priroda";
-      if (point.theme === "Koupání") return "koupani";
-      if (point.theme === "Jídlo") return "jidlo";
-      if (point.theme === "Atmosféra") return "atmosfera";
-      if (point.theme === "Atrakce") return "atrakce";
-      return "prakticke";
-    }
     function parseCoordinates(value) {
       if (!value) return null;
       const matches = [...value.replace(/\*/g, "").matchAll(/(-?\d+(?:\.\d+)?)\s*([NSEW])?/gi)];
       if (matches.length < 2) return null;
-      let lat = Number(matches[0][1]);
-      let lng = Number(matches[1][1]);
-      const latHem = (matches[0][2] || "").toUpperCase();
-      const lngHem = (matches[1][2] || "").toUpperCase();
-      if (latHem === "S") lat = -Math.abs(lat);
-      if (latHem === "N") lat = Math.abs(lat);
-      if (lngHem === "W") lng = -Math.abs(lng);
-      if (lngHem === "E") lng = Math.abs(lng);
+      let lat = Number(matches[0][1]); let lng = Number(matches[1][1]);
+      const a = (matches[0][2]||"").toUpperCase(); const b = (matches[1][2]||"").toUpperCase();
+      if (a === "S") lat = -Math.abs(lat); if (a === "N") lat = Math.abs(lat);
+      if (b === "W") lng = -Math.abs(lng); if (b === "E") lng = Math.abs(lng);
       if (Math.abs(lat) > 90 && Math.abs(lng) <= 90) [lat, lng] = [lng, lat];
       if (!Number.isFinite(lat) || !Number.isFinite(lng) || Math.abs(lat) > 90 || Math.abs(lng) > 180) return null;
       return { lat, lng };
     }
-    function escapeHtml(value) {
-      return String(value || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
-    }
-    function markerMetrics(category, size) {
-      if (category === "ubytovani") {
-        return { width: Math.round(size * 1.1), height: Math.round(size * 1.32), iconAnchor: [Math.round(size * 0.55), Math.round(size * 1.32) - 2], popupAnchor: [0, -Math.round(size * 1.22)] };
-      }
-      return { width: size, height: Math.round(size * 1.2), iconAnchor: [Math.round(size / 2), Math.round(size * 1.2) - 2], popupAnchor: [0, -Math.round(size * 1.1)] };
-    }
-    function iconSvg(category, size) {
-      const color = (categories[category] || categories.prakticke).color;
-      const stroke = "#f8efd2";
-      const ink = "#20383f";
-      const isStay = category === "ubytovani";
-      const outline = isStay ? `
-        <path d="M20 1.6 C8.5 1.6 1.6 10.1 1.6 20.2 C1.6 32.5 20 46.8 20 46.8 C20 46.8 38.4 32.5 38.4 20.2 C38.4 10.1 31.5 1.6 20 1.6 Z" fill="#f8efd2" opacity="0.98"/>
-        <path d="M20 3.8 C9.9 3.8 3.5 11.1 3.5 20 C3.5 30.8 20 43.8 20 43.8 C20 43.8 36.5 30.8 36.5 20 C36.5 11.1 30.1 3.8 20 3.8 Z" fill="${color}" stroke="${ink}" stroke-width="2.4"/>`
-      : `
-        <path d="M20 2 C9 2 2 10 2 20 C2 32 20 46 20 46 C20 46 38 32 38 20 C38 10 31 2 20 2 Z" fill="${color}" stroke="${ink}" stroke-width="1.9"/>
-        <path d="M20 5.6 C11.6 5.6 6.4 11.8 6.4 19.7 C6.4 28.6 20 39.4 20 39.4 C20 39.4 33.6 28.6 33.6 19.7 C33.6 11.8 28.4 5.6 20 5.6 Z" fill="none" stroke="${stroke}" stroke-width="1.5" opacity="0.92"/>`;
-      const art = {
-        ubytovani: `<path d="M11.8 22.3 L20 15.2 L28.2 22.3" fill="none" stroke="${stroke}" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M13.8 21.6 V29.4 H26.2 V21.6" fill="none" stroke="${stroke}" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>`,
-        priroda: `<path d="M19.9 29.2 V16.3" stroke="${stroke}" stroke-width="2.1" stroke-linecap="round"/><path d="M19.9 18.5 C16.4 17.1 13.4 18.5 12.2 22.5 C15.4 23 17.8 21.6 19.9 18.5" fill="none" stroke="${stroke}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M20.1 21.2 C23.6 19.8 26.4 21.1 27.7 25 C24.6 25.5 22.2 24.1 20.1 21.2" fill="none" stroke="${stroke}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>`,
-        turistika: `<path d="M12.8 15.2 H27.2" stroke="${stroke}" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 15.2 V29.8" stroke="${stroke}" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>`,
-        koupani: `<path d="M10.2 19.5 C12.6 17.2 15 17.2 17.4 19.5 C19.8 21.8 22.2 21.8 24.6 19.5 C27 17.2 29.4 17.2 31.8 19.5" fill="none" stroke="${stroke}" stroke-width="2.35" stroke-linecap="round"/><path d="M10.2 25.5 C12.6 23.2 15 23.2 17.4 25.5 C19.8 27.8 22.2 27.8 24.6 25.5 C27 23.2 29.4 23.2 31.8 25.5" fill="none" stroke="${stroke}" stroke-width="2.35" stroke-linecap="round"/>`,
-        jidlo: `<path d="M15 16.4 V27.7" stroke="${stroke}" stroke-width="2" stroke-linecap="round"/><path d="M13.3 16.7 V21.1 M15 16.7 V21.1 M16.7 16.7 V21.1" stroke="${stroke}" stroke-width="1.35" stroke-linecap="round"/><path d="M24.6 16.5 C22.8 18.4 22.7 21.2 24.4 22.7 C25.2 23.5 25.6 24.7 25.6 25.9 V27.7" fill="none" stroke="${stroke}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>`,
-        atmosfera: `<path d="M12.3 27.4 H27.7" stroke="${stroke}" stroke-width="2.1" stroke-linecap="round"/><path d="M15.2 22 A4.8 4.8 0 0 1 24.8 22" fill="none" stroke="${stroke}" stroke-width="2.15" stroke-linecap="round"/><path d="M20 14.4 V17" stroke="${stroke}" stroke-width="1.9" stroke-linecap="round"/>`,
-        prakticke: `<circle cx="20" cy="16.2" r="2" fill="${stroke}"/><path d="M20 20.4 V28.6" stroke="${stroke}" stroke-width="2.55" stroke-linecap="round"/>`,
-        atrakce: `<path d="M20 14.3 L21.9 18.5 L26.5 19 L23.1 22 L24.1 26.4 L20 24 L15.9 26.4 L16.9 22 L13.5 19 L18.1 18.5 Z" fill="none" stroke="${stroke}" stroke-width="2" stroke-linejoin="round"/>`
-      };
-      const metrics = markerMetrics(category, size);
-      return `<svg viewBox="0 0 40 48" xmlns="http://www.w3.org/2000/svg" width="${metrics.width}" height="${metrics.height}">${outline}${art[category] || art.prakticke}</svg>`;
-    }
-    function pointDetail(point) { return mapDetails[point.notionUrl] || null; }
+    function escapeHtml(v) { return String(v||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;"); }
+    function pointDetail(p) { return mapDetails[p.notionUrl] || null; }
+    const TEMA_COLOR = { "Turistika":"#4a7c59","Koupání":"#2e86ab","Příroda":"#6b9e6b","Atmosféra":"#c17f4a","Jídlo":"#b85c38","Praktické":"#6a6a7a","Atrakce":"#7a5a9a","Ubytování":"#8b6f47","Informace":"#4a6a7a" };
+    const TEMA_EMOJI = { "Turistika":"🥾","Koupání":"🏊","Příroda":"🌿","Atmosféra":"🌅","Jídlo":"🍽","Praktické":"🔧","Atrakce":"🏛","Ubytování":"🛏","Informace":"ℹ️" };
+    const pinColor = p => p.type === "Ubytování" ? TEMA_COLOR["Ubytování"] : (TEMA_COLOR[p.theme] || "#6a6a7a");
+    const pinEmoji = p => p.type === "Ubytování" ? "🛏" : (TEMA_EMOJI[p.theme] || "📍");
 
-    const points = rawPoints
-      .filter(p => p.type !== "Doprava")
-      .map((p, i) => ({ ...p, id: "p" + i, category: categoryFor(p), coordinates: parseCoordinates(p.rawCoordinates) }))
-      .filter(p => p.coordinates);
+    const points = rawPoints.filter(p => p.type !== "Doprava").map(p => ({ ...p, coordinates: parseCoordinates(p.rawCoordinates) })).filter(p => p.coordinates);
 
     const map = L.map("map", { zoomControl: true }).setView([38.45, -28.05], 7);
     const baseLayers = {
@@ -140,33 +126,17 @@
     baseLayers["Mapa (OpenStreetMap)"].addTo(map);
     L.control.layers(baseLayers, null, { position: "topright", collapsed: true }).addTo(map);
 
-    const TEMA_COLOR = { "Turistika":"#4a7c59","Koupání":"#2e86ab","Příroda":"#6b9e6b","Atmosféra":"#c17f4a","Jídlo":"#b85c38","Praktické":"#6a6a7a","Atrakce":"#7a5a9a","Ubytování":"#8b6f47","Informace":"#4a6a7a" };
-    const TEMA_EMOJI = { "Turistika":"🥾","Koupání":"🏊","Příroda":"🌿","Atmosféra":"🌅","Jídlo":"🍽","Praktické":"🔧","Atrakce":"🏛","Ubytování":"🛏","Informace":"ℹ️" };
-    const pinColor = p => p.type === "Ubytování" ? TEMA_COLOR["Ubytování"] : (TEMA_COLOR[p.theme] || "#6a6a7a");
-    const pinEmoji = p => p.type === "Ubytování" ? "🛏" : (TEMA_EMOJI[p.theme] || "📍");
     const small = Math.min(window.innerWidth, window.innerHeight) < 560;
-
     points.forEach(point => {
       const isUbyt = point.type === "Ubytování";
       const sz = isUbyt ? (small ? 32 : 38) : (small ? 28 : 32);
       const fs2 = Math.round(sz / 2);
       const detail = pointDetail(point);
       const desc = (detail && detail.shortDescription) ? detail.shortDescription : (point.subtitle || "");
-      const img = detail && detail.primaryImage ? detail.primaryImage : "";
+      const img = detail && detail.primaryImage ? String(detail.primaryImage).split(",")[0].trim() : "";
       const themeLabel = isUbyt ? "Ubytování" : (point.theme || "Místo");
-      const html = `
-        <div class="popup-card">
-          ${img ? `<div class="popup-img"><img src="${escapeHtml(img)}" alt="${escapeHtml(point.name)}" loading="lazy"></div>` : ""}
-          <div class="popup-title">${escapeHtml(point.name)}</div>
-          ${desc ? `<div class="popup-desc">${escapeHtml(desc)}</div>` : ""}
-          <div class="popup-tags"><span class="tag">${escapeHtml(themeLabel)}</span></div>
-          ${point.mapyUrl ? `<a class="popup-link" href="${escapeHtml(point.mapyUrl)}" target="_blank" rel="noopener">🗺 Mapy.cz</a>` : ""}
-        </div>`;
-      const icon = L.divIcon({
-        className: "atlas-marker",
-        html: `<div style="width:${sz}px;height:${sz}px;background:${pinColor(point)};border:2.5px solid #000;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 5px rgba(0,0,0,0.45);font-size:${fs2}px;line-height:1">${pinEmoji(point)}</div>`,
-        iconSize: [sz, sz], iconAnchor: [sz / 2, sz / 2], popupAnchor: [0, -Math.round(sz / 2)]
-      });
+      const html = `<div class="popup-card">${img ? `<div class="popup-img"><img src="${escapeHtml(img)}" alt="${escapeHtml(point.name)}" loading="lazy" onerror="this.closest('.popup-img').style.display='none'"></div>` : ""}<div class="popup-title">${escapeHtml(point.name)}</div>${desc ? `<div class="popup-desc">${escapeHtml(desc)}</div>` : ""}<div class="popup-tags"><span class="tag">${escapeHtml(themeLabel)}</span></div>${point.mapyUrl ? `<a class="popup-link" href="${escapeHtml(point.mapyUrl)}" target="_blank" rel="noopener">🗺 Mapy.cz</a>` : ""}</div>`;
+      const icon = L.divIcon({ className: "atlas-marker", html: `<div style="width:${sz}px;height:${sz}px;background:${pinColor(point)};border:2.5px solid #000;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 5px rgba(0,0,0,0.45);font-size:${fs2}px;line-height:1">${pinEmoji(point)}</div>`, iconSize: [sz, sz], iconAnchor: [sz / 2, sz / 2], popupAnchor: [0, -Math.round(sz / 2)] });
       L.marker([point.coordinates.lat, point.coordinates.lng], { icon, zIndexOffset: isUbyt ? 500 : 0 }).addTo(map).bindPopup(html, { maxWidth: 280, minWidth: 200 });
     });
   </script>
